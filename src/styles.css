@@ -125,3 +125,19 @@ body {
   width: 40%;
   font-size: 3.5rem;
 }
+
+.intro-container-right h1 {
+  animation: 10s fade-right linear;
+}
+
+@keyframes fade-right {
+  0%,
+  60% {
+    opacity: 0;
+  }
+  70%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+}
