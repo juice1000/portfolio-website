@@ -50,7 +50,7 @@ body {
 }
 
 .intro-container-left h1:nth-child(2) {
-  margin: 1.2rem; /* rem units */
+  margin: 1.2rem; /* rem units are responsive to window size */
   opacity: 0;
   animation: 10s fade2 linear infinite;
 }
