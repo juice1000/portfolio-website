@@ -38,24 +38,24 @@ body {
 
 .intro-container-left {
   width: 50%;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  align-items: center; */
+  align-items: center;
   /* background-color: grey; */
 }
 .intro-container-left h1:nth-child(1) {
-  margin: 0;
+  margin: 1.2rem;
   opacity: 0;
   animation: 10s fade1 linear infinite;
 }
 
 .intro-container-left h1:nth-child(2) {
-  margin: 0;
+  margin: 1.2rem; /* rem units */
   opacity: 0;
   animation: 10s fade2 linear infinite;
 }
 .intro-container-left h1:nth-child(3) {
-  margin: 0;
+  margin: 1.2rem;
   opacity: 0;
   animation: 10s fade3 linear infinite;
 }
