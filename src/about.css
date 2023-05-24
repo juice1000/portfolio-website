@@ -5,9 +5,37 @@
 }
 
 .about-subcontainer {
-  display: flex;
-  background-color: aqua;
+  /* background-color: aqua; */
   height: 100%;
+  display: flex;
+  flex-direction: column;
   margin-left: 4vw;
   margin-right: 4vw;
+}
+
+.about-subcontainer h1 {
+  margin-top: 5%;
+}
+
+.about-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: grey; */
+}
+.about-left {
+  width: 40%;
+  font-size: x-large;
+  text-align: justify;
+  /* background-color: red; */
+}
+.about-right {
+  width: 50%;
+  z-index: 2;
+}
+
+.intro-gif {
+  width: 100%;
+  height: auto;
 }
