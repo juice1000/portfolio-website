@@ -1,5 +1,6 @@
 // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
 // starting from v2 you can add only the features you need reducing the bundle size
+
 $(document).ready(async function () {
   await loadFull(tsParticles);
 
@@ -12,7 +13,7 @@ $(document).ready(async function () {
         //     value: '#0d47a1',
         //   },
         // },
-        fpsLimit: 120,
+        fpsLimit: 60,
         interactivity: {
           events: {
             onClick: {
@@ -27,7 +28,7 @@ $(document).ready(async function () {
           },
           modes: {
             push: {
-              quantity: 4,
+              quantity: 50,
             },
             repulse: {
               distance: 200,
@@ -65,7 +66,9 @@ $(document).ready(async function () {
               area: 800,
             },
             value: 20,
+            limit: 400,
           },
+
           opacity: {
             value: 0.5,
           },
