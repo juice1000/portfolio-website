@@ -1,0 +1,13 @@
+.about-container {
+  background-color: rgba(80, 80, 80, 0.5);
+  height: 100vh;
+  width: 100vw;
+}
+
+.about-subcontainer {
+  display: flex;
+  background-color: aqua;
+  height: 100%;
+  margin-left: 4vw;
+  margin-right: 4vw;
+}
