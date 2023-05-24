@@ -24,6 +24,12 @@ body {
   cursor: pointer;
   font-size: large;
 }
+#nav-info-left {
+  margin-left: 4vw;
+  margin-right: auto;
+  cursor: auto;
+  color: rgb(250, 220, 58);
+}
 .navbar-container span:hover {
   text-shadow: white 1px 0 10px;
 }
