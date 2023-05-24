@@ -6,29 +6,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My App</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="particles.css">
         <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+            crossorigin="anonymous"></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles-engine"></script>
+        <!-- then include any tsParticles plugin needed -->
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles/tsparticles.bundle.min.js"></script>
+        <!-- then include jquery wrapper -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery-particles"></script>
+        <script src="./index.js"></script>
     </head>
 
     <body>
-        <div class="navbar-container">
-            <span>Download CV</span>
-            <span>About Me</span>
-            <span>Example Projects</span>
-            <span>Timeline</span>
-        </div>
-
-        <div class="intro-container">
-            <div class="intro-container-left">
-
-                <h1>Data Science</h1>
-                <h1>Full Stack Developer</h1>
-                <h1>Software Engineering</h1>
+        <div id="tsparticles"></div>
+        <div class="particles-container">
+            <div class="navbar-container">
+                <span>Download CV</span>
+                <span>About Me</span>
+                <span>Example Projects</span>
+                <span>Timeline</span>
             </div>
-            <div class="intro-container-right">
-                <h1>Julien Look</h1>
+
+            <div class="intro-container">
+                <div class="intro-container-left">
+                    <h1>Data Science</h1>
+                    <h1>Full Stack Dev</h1>
+                    <h1>Software Engineering</h1>
+                </div>
+                <div class="intro-container-right">
+                    <h1>Julien Look</h1>
+                </div>
             </div>
         </div>
-
     </body>
 
 </html>
