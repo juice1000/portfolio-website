@@ -19,6 +19,7 @@
 
 .about-content {
   display: flex;
+  margin-top: 3%;
   width: 100%;
   align-items: center;
   justify-content: space-between;
@@ -26,7 +27,7 @@
 }
 .about-left {
   width: 40%;
-  font-size: x-large;
+  font-size: 1.3vw;
   text-align: justify;
   /* background-color: red; */
 }

@@ -12,6 +12,7 @@ h1 {
 
 .navbar-container {
   position: sticky;
+  z-index: 1000;
   background-color: rgba(80, 80, 80, 0.5);
   top: 0;
   display: flex;
