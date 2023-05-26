@@ -10,12 +10,29 @@ window.addEventListener('load', () => {
         currNode = currNode.parentNode;
       }
 
-      currNode.focussing = true;
-
-      // this will result in O(n^2), dunno if there's a better way to do this
-      for (const project of projects) {
-        if (!project.focussing) {
-          project.classList.toggle('projects-item-hidden');
+      if (!currNode.focussing) {
+        currNode.focussing = true;
+        // this will result in O(n^2), dunno if there's a better way to do this
+        for (const project of projects) {
+          if (!project.focussing) {
+            project.classList.toggle('projects-item-hidden');
+          } else {
+            project.classList.toggle('projects-item-expanded');
+            if (project.classList.contains('projects-item-shrink')) {
+              project.classList.toggle('projects-item-shrink');
+            }
+          }
+        }
+      } else {
+        currNode.focussing = false;
+        for (const project of projects) {
+          if (project.classList.contains('projects-item-hidden')) {
+            project.classList.toggle('projects-item-hidden');
+          }
+          if (project.classList.contains('projects-item-expanded')) {
+            project.classList.toggle('projects-item-expanded');
+            project.classList.toggle('projects-item-shrink');
+          }
         }
       }
     });

@@ -45,10 +45,10 @@
   /* top: 100%; */
   left: 100%;
   /* display: none; */
-  animation: 12s autoplay2 infinite ease-in-out;
+  animation: 12s slideshow infinite ease-in-out;
 }
 
-@keyframes autoplay2 {
+@keyframes slideshow {
   0% {
     left: 100%;
   }
@@ -81,8 +81,12 @@
   height: 80%;
   display: flex;
   flex-direction: column;
+  /* gap: 5%; */
   align-items: center;
   justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  /* background-color: green; */
 }
 
 .projects-item {
@@ -91,11 +95,66 @@
   height: 30%;
   border-radius: 10px;
   border: 1px solid;
+  display: block;
+  position: relative;
 }
 
 .projects-item-hidden {
-  display: none;
+  margin-left: 200%;
+  animation: slideOutRight 1s ease;
+  animation-fill-mode: forwards;
 }
+
+/* we need to add another div element on top so our other divs don't move up*/
+.projects-item-expanded {
+  z-index: 3;
+  position: absolute;
+  animation: 0.5s expand 0.7s ease;
+  animation-fill-mode: forwards;
+}
+
+.projects-item-shrink {
+  height: 30%;
+
+  animation: 0.5s shrink ease;
+}
+
+@keyframes expand {
+  0% {
+    height: 10%;
+  }
+  100% {
+    height: 99%;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 30%;
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    margin-left: 0%;
+    height: 30%;
+  }
+  30% {
+    margin-left: -5%;
+    height: 30%;
+  }
+  99% {
+    height: 30%;
+  }
+  100% {
+    margin-left: 200%;
+    height: 0%;
+  }
+}
+
 .projects-item:hover {
   background-color: rgb(80, 80, 80);
 }
