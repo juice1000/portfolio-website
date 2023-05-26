@@ -59,10 +59,10 @@
     left: 20%;
   }
   37.33% {
-    left: -100%;
+    left: -120%;
   }
   100% {
-    left: -100%;
+    left: -120%;
   }
 }
 
@@ -91,6 +91,10 @@
   height: 30%;
   border-radius: 10px;
   border: 1px solid;
+}
+
+.projects-item-hidden {
+  display: none;
 }
 .projects-item:hover {
   background-color: rgb(80, 80, 80);
