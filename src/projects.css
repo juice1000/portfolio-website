@@ -23,6 +23,7 @@
   height: 70%;
   align-items: center;
   justify-content: space-between;
+
   /* background-color: grey; */
 }
 
@@ -81,53 +82,87 @@
   height: 80%;
   display: flex;
   flex-direction: column;
-  /* gap: 5%; */
+  gap: 5%;
   align-items: center;
   justify-content: space-between;
-  overflow: hidden;
   position: relative;
   /* background-color: green; */
+  overflow-y: visible;
+}
+
+.projects-item-container {
+  z-index: 2;
+  width: 80%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  gap: 5%;
+}
+
+.projects-item-container-top {
+  z-index: 3;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  /* background-color: black; */
+  gap: 5%;
 }
 
 .projects-item {
-  z-index: 2;
-  width: 80%;
+  width: 100%;
   height: 30%;
   border-radius: 10px;
   border: 1px solid;
   display: block;
   position: relative;
 }
+.projects-item-top {
+  width: 100%;
+  height: 30%;
+  border-radius: 10px;
+  border: 1px solid;
+  /* display: none; */
+  position: relative;
+}
+
+.projects-item-top-hidden {
+  display: none;
+}
 
 .projects-item-hidden {
-  margin-left: 200%;
   animation: slideOutRight 1s ease;
   animation-fill-mode: forwards;
 }
 
-/* we need to add another div element on top so our other divs don't move up*/
-.projects-item-expanded {
-  z-index: 3;
-  position: absolute;
-  animation: 0.5s expand 0.7s ease;
-  animation-fill-mode: forwards;
+.projects-item-slide-in {
+  animation: slideInRight 1s;
+}
+.projects-item-invisible {
+  visibility: hidden;
 }
 
+/* we need to add another div element on top so our other divs don't move up*/
+.projects-item-expanded {
+  animation: 0.5s expand 0.5s ease;
+  animation-fill-mode: forwards;
+}
 .projects-item-shrink {
-  height: 30%;
-
   animation: 0.5s shrink ease;
+  animation-fill-mode: forwards;
 }
 
 @keyframes expand {
   0% {
-    height: 10%;
+    height: 30%;
   }
   100% {
-    height: 99%;
+    height: 100%;
   }
 }
-
 @keyframes shrink {
   0% {
     height: 100%;
@@ -140,19 +175,26 @@
 @keyframes slideOutRight {
   0% {
     margin-left: 0%;
-    height: 30%;
   }
   30% {
     margin-left: -5%;
-    height: 30%;
-  }
-  99% {
-    height: 30%;
   }
   100% {
     margin-left: 200%;
-    height: 0%;
   }
+}
+
+@keyframes slideInRight {
+  0% {
+    margin-left: 200%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+.projects-item-top:hover {
+  background-color: rgb(80, 80, 80);
 }
 
 .projects-item:hover {
