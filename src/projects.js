@@ -1,7 +1,10 @@
 window.addEventListener('load', () => {
   const projects = document.querySelectorAll('.projects-item');
   const projectsTop = document.querySelectorAll('.projects-item-top');
-  const selectionMask = document.querySelector('.selection-mask');
+
+  // we need to programatically change the height of the selection mask
+  const selectionMask = document.getElementById('selection-mask');
+  selectionMask.style.height = `${document.body.clientHeight}px`;
 
   for (const project of projectsTop) {
     project.addEventListener('click', (e) => {

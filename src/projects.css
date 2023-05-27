@@ -29,7 +29,7 @@
 }
 
 .projects-left {
-  z-index: 2;
+  z-index: 4;
   width: 50%;
   height: 80%;
   font-size: 1.3vw;
@@ -88,6 +88,7 @@
   position: relative;
   /* background-color: green; */
   overflow-y: visible;
+  overflow-x: hidden;
 }
 
 .projects-item-container {
@@ -97,7 +98,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  display: flex;
+  visibility: hidden;
   gap: 5%;
 }
 
@@ -139,11 +140,13 @@
 }
 
 .projects-item-hidden {
+  visibility: visible;
   animation: slideOutRight 1s ease;
   animation-fill-mode: forwards;
 }
 
 .projects-item-slide-in {
+  visibility: visible;
   animation: slideInRight 1s;
 }
 .projects-item-invisible {
@@ -161,11 +164,9 @@
   animation-fill-mode: forwards;
 }
 
-.selection-mask {
-  z-index: 1;
+#selection-mask {
   position: absolute;
-  top: 0;
-  height: 100%;
+  z-index: 3;
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
 }
