@@ -30,7 +30,7 @@
 
 .projects-left {
   z-index: 4;
-  width: 50%;
+  width: 55%;
   height: 80%;
   font-size: 1.3vw;
   text-align: justify;
@@ -47,6 +47,13 @@
   position: absolute;
   left: 100%;
   animation: 12s slideshow infinite ease-in-out;
+}
+
+.image-focus {
+  height: 100%;
+}
+.image-hide {
+  display: none;
 }
 
 @keyframes slideshow {
@@ -78,7 +85,7 @@
 }
 
 .projects-right {
-  width: 50%;
+  width: 45%;
   height: 80%;
   display: flex;
   flex-direction: column;
