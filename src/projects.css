@@ -2,6 +2,7 @@
   background-color: rgba(80, 80, 80, 0.5);
   height: 100vh;
   width: 100vw;
+  position: relative;
 }
 
 .projects-subcontainer {
@@ -28,6 +29,7 @@
 }
 
 .projects-left {
+  z-index: 2;
   width: 50%;
   height: 80%;
   font-size: 1.3vw;
@@ -43,9 +45,7 @@
   height: 100%;
   overflow: hidden;
   position: absolute;
-  /* top: 100%; */
   left: 100%;
-  /* display: none; */
   animation: 12s slideshow infinite ease-in-out;
 }
 
@@ -54,10 +54,10 @@
     left: 100%;
   }
   4% {
-    left: 20%;
+    left: 0%;
   }
   33.33% {
-    left: 20%;
+    left: 0%;
   }
   37.33% {
     left: -120%;
@@ -102,7 +102,7 @@
 }
 
 .projects-item-container-top {
-  z-index: 3;
+  z-index: 4;
   width: 80%;
   height: 100%;
   display: flex;
@@ -125,7 +125,6 @@
   height: 30%;
   border-radius: 10px;
   border: 1px solid;
-  /* display: none; */
   position: relative;
 }
 
@@ -159,6 +158,24 @@
 .projects-item-shrink {
   height: 100%;
   animation: 0.5s shrink ease;
+  animation-fill-mode: forwards;
+}
+
+.selection-mask {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.selection-active {
+  animation: dimBackground 1s linear;
+  animation-fill-mode: forwards;
+}
+.selection-inactive {
+  animation: lightBackground 1s linear;
   animation-fill-mode: forwards;
 }
 
@@ -213,6 +230,19 @@
   }
   100% {
     margin-left: 0%;
+  }
+}
+@keyframes dimBackground {
+  100% {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+@keyframes lightBackground {
+  0% {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 

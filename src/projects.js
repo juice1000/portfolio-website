@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
   const projects = document.querySelectorAll('.projects-item');
   const projectsTop = document.querySelectorAll('.projects-item-top');
+  const selectionMask = document.querySelector('.selection-mask');
 
   for (const project of projectsTop) {
     project.addEventListener('click', (e) => {
@@ -25,6 +26,8 @@ window.addEventListener('load', () => {
             projectsTop[i].classList.add('projects-item-expanded');
           }
         }
+
+        selectionMask.classList.add('selection-active');
       } else {
         currNode.focussing = false;
         for (let i = 0; i < projectsTop.length; i++) {
@@ -43,6 +46,9 @@ window.addEventListener('load', () => {
             setTimeout(() => projectsTop[i].classList.remove('projects-item-shrink'), 1000);
           }
         }
+        selectionMask.classList.add('selection-inactive');
+        selectionMask.classList.remove('selection-active');
+        setTimeout(() => selectionMask.classList.remove('selection-inactive'), 1000);
       }
     });
   }
