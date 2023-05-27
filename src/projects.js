@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
         // this will result in O(n^2), dunno if there's a better way to do this
         for (let i = 0; i < projectsTop.length; i++) {
           if (!projectsTop[i].focussing) {
-            projectsTop[i].classList.add('projects-item-top-hidden');
+            projectsTop[i].classList.add('projects-item-top-shrink');
             projects[i].classList.add('projects-item-hidden');
           } else {
             projects[i].classList.add('projects-item-invisible');
@@ -28,15 +28,17 @@ window.addEventListener('load', () => {
       } else {
         currNode.focussing = false;
         for (let i = 0; i < projectsTop.length; i++) {
-          if (projectsTop[i].classList.contains('projects-item-top-hidden')) {
-            setTimeout(() => projectsTop[i].classList.remove('projects-item-top-hidden'), 1000);
+          if (projectsTop[i].classList.contains('projects-item-top-shrink')) {
+            projectsTop[i].classList.add('projects-item-top-expand-from-zero');
+            setTimeout(() => projectsTop[i].classList.remove('projects-item-top-shrink'), 1000);
+            setTimeout(() => projectsTop[i].classList.remove('projects-item-top-expand-from-zero'), 1000);
             projects[i].classList.add('projects-item-slide-in');
             setTimeout(() => projects[i].classList.remove('projects-item-slide-in'), 1000);
             projects[i].classList.remove('projects-item-hidden');
           }
-          if (project.classList.contains('projects-item-expanded')) {
-            projects[i].classList.remove('projects-item-invisible');
+          if (projectsTop[i].classList.contains('projects-item-expanded')) {
             projectsTop[i].classList.add('projects-item-shrink');
+            setTimeout(() => projects[i].classList.remove('projects-item-invisible'), 1000);
             setTimeout(() => projectsTop[i].classList.remove('projects-item-expanded'), 1000);
             setTimeout(() => projectsTop[i].classList.remove('projects-item-shrink'), 1000);
           }
