@@ -5,6 +5,13 @@
   position: relative;
 }
 
+#projects-container a {
+  color: white;
+}
+#projects-container a:hover {
+  color: grey;
+}
+
 .projects-subcontainer {
   /* background-color: aqua; */
   height: 100%;
@@ -134,6 +141,7 @@
   border-radius: 10px;
   border: 1px solid;
   position: relative;
+  overflow: hidden;
 }
 
 .projects-item-top-shrink {
@@ -267,6 +275,7 @@
   flex-direction: column;
   margin-left: 1.5vw;
   margin-right: 1.5vw;
+  overflow: hidden;
 }
 
 .projects-item-content h5 {

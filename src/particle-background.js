@@ -1,18 +1,17 @@
 // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
 // starting from v2 you can add only the features you need reducing the bundle size
 
+const particlesConfig = {
+  /* your tsParticles configuration */
+  emitters: [],
+};
 $(document).ready(async function () {
-  await loadFull(tsParticles);
+  await loadFull(tsParticles, particlesConfig);
 
   $('#tsparticles')
     .particles()
     .init(
       {
-        // background: {
-        //   color: {
-        //     value: '#0d47a1',
-        //   },
-        // },
         fpsLimit: 60,
         interactivity: {
           events: {
