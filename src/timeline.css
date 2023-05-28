@@ -3,6 +3,14 @@
   height: 100vh;
   width: 100vw;
 }
+#timeline-container a {
+  color: white;
+  cursor: pointer;
+  z-index: 3;
+}
+#timeline-container span {
+  z-index: 3;
+}
 
 .timeline-subcontainer {
   /* background-color: aqua; */
