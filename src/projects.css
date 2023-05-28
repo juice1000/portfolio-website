@@ -24,6 +24,10 @@
 .projects-subcontainer h1 {
   margin-top: 5%;
 }
+/* .projects-subcontainer h2 {
+  margin: 0;
+  margin-top: 5%;
+} */
 
 .projects-content {
   display: flex;
@@ -56,9 +60,12 @@
   animation: 12s slideshow infinite ease-in-out;
 }
 
-.image-focus {
+.preview {
+  display: none;
   height: 100%;
+  overflow: hidden;
 }
+
 .image-hide {
   display: none;
 }
@@ -171,6 +178,7 @@
 
 /* we need to add another div element on top so our other divs don't move up*/
 .projects-item-expanded {
+  overflow-y: scroll;
   animation: 0.5s expand 0.5s ease;
   animation-fill-mode: forwards;
 }
