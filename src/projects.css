@@ -191,12 +191,14 @@
 
 #selection-mask {
   position: absolute;
-  z-index: 3;
+  /* z-index: 3; */
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
 }
 
 .selection-active {
+  z-index: 3;
+  cursor: pointer;
   animation: dimBackground 1s linear;
   animation-fill-mode: forwards;
 }

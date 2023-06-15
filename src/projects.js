@@ -1,25 +1,65 @@
-window.addEventListener('load', () => {
-  const projects = document.querySelectorAll('.projects-item');
-  const projectsTop = document.querySelectorAll('.projects-item-top');
-  const slideShowImages = document.querySelectorAll('.slideShow');
-  const previews = document.querySelectorAll('.preview');
+let focussed = false;
+let currNode;
+let projects;
+let projectsTop;
+let slideShowImages;
+let previews;
+let selectionMask;
 
-  // we need to programatically change the height of the selection mask
-  const selectionMask = document.getElementById('selection-mask');
+function collapseCard() {
+  for (let i = 0; i < projectsTop.length; i++) {
+    slideShowImages[i].classList.add('slideShow');
+    slideShowImages[i].classList.remove('image-hide');
+    if (projectsTop[i].classList.contains('projects-item-top-shrink')) {
+      projectsTop[i].classList.add('projects-item-top-expand-from-zero');
+      setTimeout(() => projectsTop[i].classList.remove('projects-item-top-shrink'), 1000);
+      setTimeout(() => projectsTop[i].classList.remove('projects-item-top-expand-from-zero'), 1000);
+      projects[i].classList.add('projects-item-slide-in');
+      setTimeout(() => projects[i].classList.remove('projects-item-slide-in'), 1000);
+      projects[i].classList.remove('projects-item-hidden');
+    }
+    if (projectsTop[i].classList.contains('projects-item-expanded')) {
+      projectsTop[i].classList.add('projects-item-shrink');
+      setTimeout(() => projects[i].classList.remove('projects-item-invisible'), 1000);
+      setTimeout(() => projectsTop[i].classList.remove('projects-item-expanded'), 1000);
+      setTimeout(() => projectsTop[i].classList.remove('projects-item-shrink'), 1000);
+
+      previews[i].style.display = 'none';
+    }
+  }
+  selectionMask.classList.add('selection-inactive');
+  selectionMask.classList.remove('selection-active');
+  setTimeout(() => selectionMask.classList.remove('selection-inactive'), 1000);
+  focussed = false;
+  currNode = null;
+}
+
+window.addEventListener('load', () => {
+  projects = document.querySelectorAll('.projects-item');
+  projectsTop = document.querySelectorAll('.projects-item-top');
+  slideShowImages = document.querySelectorAll('.slideShow');
+  previews = document.querySelectorAll('.preview');
+
+  // we need to programatically change the height of the selection mask because it's not possible in CSS
+  selectionMask = document.getElementById('selection-mask');
   selectionMask.style.height = `${document.body.clientHeight}px`;
+
+  // check first if one item is in focus
 
   for (const project of projectsTop) {
     project.addEventListener('click', (e) => {
-      let currNode = e.target;
-
+      e.preventDefault();
+      currNode = e.target;
+      console.log('focussed', focussed);
       // could be that we clicked a child of the element
       while (!currNode.classList.contains('projects-item-top')) {
         currNode = currNode.parentNode;
       }
       // we give the container the flag focussing
       // all other containers will toggle their classes
-      if (!currNode.focussing) {
+      if (!focussed) {
         currNode.focussing = true;
+        focussed = true;
 
         // this will result in O(n^2), dunno if there's a better way to do this
         for (let i = 0; i < projectsTop.length; i++) {
@@ -44,31 +84,15 @@ window.addEventListener('load', () => {
 
         selectionMask.classList.add('selection-active');
       } else {
-        currNode.focussing = false;
-        for (let i = 0; i < projectsTop.length; i++) {
-          slideShowImages[i].classList.add('slideShow');
-          slideShowImages[i].classList.remove('image-hide');
-          if (projectsTop[i].classList.contains('projects-item-top-shrink')) {
-            projectsTop[i].classList.add('projects-item-top-expand-from-zero');
-            setTimeout(() => projectsTop[i].classList.remove('projects-item-top-shrink'), 1000);
-            setTimeout(() => projectsTop[i].classList.remove('projects-item-top-expand-from-zero'), 1000);
-            projects[i].classList.add('projects-item-slide-in');
-            setTimeout(() => projects[i].classList.remove('projects-item-slide-in'), 1000);
-            projects[i].classList.remove('projects-item-hidden');
-          }
-          if (projectsTop[i].classList.contains('projects-item-expanded')) {
-            projectsTop[i].classList.add('projects-item-shrink');
-            setTimeout(() => projects[i].classList.remove('projects-item-invisible'), 1000);
-            setTimeout(() => projectsTop[i].classList.remove('projects-item-expanded'), 1000);
-            setTimeout(() => projectsTop[i].classList.remove('projects-item-shrink'), 1000);
-
-            previews[i].style.display = 'none';
-          }
-        }
-        selectionMask.classList.add('selection-inactive');
-        selectionMask.classList.remove('selection-active');
-        setTimeout(() => selectionMask.classList.remove('selection-inactive'), 1000);
+        collapseCard();
       }
     });
   }
+
+  selectionMask.addEventListener('click', () => {
+    // if yes we create an event listener for anywhere on the webpage so we can click the focus away
+    if (focussed && currNode) {
+      collapseCard();
+    }
+  });
 });
