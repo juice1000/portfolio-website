@@ -19,6 +19,11 @@ function collapseCard() {
       projects[i].classList.remove('projects-item-hidden');
     }
     if (projectsTop[i].classList.contains('projects-item-expanded')) {
+      projectsTop[i].scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
       projectsTop[i].classList.add('projects-item-shrink');
       setTimeout(() => projects[i].classList.remove('projects-item-invisible'), 1000);
       setTimeout(() => projectsTop[i].classList.remove('projects-item-expanded'), 1000);
@@ -50,7 +55,6 @@ window.addEventListener('load', () => {
     project.addEventListener('click', (e) => {
       e.preventDefault();
       currNode = e.target;
-      console.log('focussed', focussed);
       // could be that we clicked a child of the element
       while (!currNode.classList.contains('projects-item-top')) {
         currNode = currNode.parentNode;
