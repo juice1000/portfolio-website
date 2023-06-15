@@ -27,7 +27,7 @@ $(document).ready(async function () {
           },
           modes: {
             push: {
-              quantity: 50,
+              quantity: 40,
             },
             repulse: {
               distance: 200,
@@ -64,8 +64,8 @@ $(document).ready(async function () {
               enable: true,
               area: 800,
             },
-            value: 20,
-            limit: 400,
+            value: 60,
+            limit: 250,
           },
 
           opacity: {
@@ -83,6 +83,13 @@ $(document).ready(async function () {
       function (container) {
         // container is the particles container where you can play/pause or stop/start.
         // the container is already started, you don't need to start it manually.
+        setInterval(() => {
+          // clear particles every 100ms to prevent overloaded background
+          if (container.particles._array.length > 40) {
+            container.particles._array.splice(-1, 20);
+            container.particles._zArray.splice(-1, 20);
+          }
+        }, 100);
       }
     );
 });
