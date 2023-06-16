@@ -20,6 +20,7 @@
         <!-- then include jquery wrapper -->
         <script src="https://cdn.jsdelivr.net/npm/jquery-particles"></script>
         <script src="./particle-background.js"></script>
+        <script src="./page-layout.js"></script>
         <script src="./projects.js"></script>
         <script src="./page-navigation.js"></script>
     </head>
@@ -32,18 +33,45 @@
 
         <div id="tsparticles"></div>
         <div id="selection-mask"></div>
-        <div class="navbar-container">
-            <span id="nav-info-left">Click somewhere! &#10024;</span>
-            <a href="mailto:julienlook.professional@gmail.com?subject=Need a Freelance Developer!">
-                <span>Contact Me</span>
-            </a>
-            <a href="/assets/Julien Look - Resume.pdf" aria-label='download CV button' download>
-                <span>Download CV</span>
-            </a>
-            <span id="about-route">About Me</span>
-            <span id="projects-route">Example Projects</span>
-            <span id="timeline-route">Timeline</span>
+        <div id="navmenu-mobile">
+            <div class="navmenu-mobile-content">
+                <a href="mailto:julienlook.professional@gmail.com?subject=Need a Freelance Developer!">
+                    <span>Contact Me</span>
+                </a>
+                <a href="/assets/Julien Look - Resume.pdf" aria-label='download CV button' download>
+                    <span>Download CV</span>
+                </a>
+                <span id="about-route-mobile">About Me</span>
+                <span id="projects-route-mobile">Example Projects</span>
+                <span id="timeline-route-mobile">Timeline</span>
+            </div>
+
         </div>
+
+        <div class="navbar-container">
+            <div id="nav-info-left">
+                <span>Click somewhere! &#10024;</span>
+            </div>
+            <div id="nav-info-right">
+                <a href="mailto:julienlook.professional@gmail.com?subject=Need a Freelance Developer!">
+                    <span>Contact Me</span>
+                </a>
+                <a href="/assets/Julien Look - Resume.pdf" aria-label='download CV button' download>
+                    <span>Download CV</span>
+                </a>
+                <span id="about-route">About Me</span>
+                <span id="projects-route">Example Projects</span>
+                <span id="timeline-route">Timeline</span>
+            </div>
+            <div id="navbar-info-right-collapsed" onclick="changeNavigationIcon(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+
+
+        </div>
+
 
 
 
