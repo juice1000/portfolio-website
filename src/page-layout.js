@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
   navbarCollapsed = document.querySelectorAll('#navbar-info-right-collapsed')[0];
   navMenuMobile = document.querySelectorAll('#navmenu-mobile')[0];
 
-  navMenuMobile.style.height = `${document.body.clientHeight}px`;
+  //   navMenuMobile.style.height = `${document.body.clientHeight}px`;
 
   if (windowWidth / windowHeight < 1) {
     // do the logic to create mobile layout
@@ -42,10 +42,13 @@ window.addEventListener('load', () => {
 function changeNavigationIcon(icon) {
   icon.classList.toggle('change');
   if (icon.classList.contains('change')) {
+    navMenuMobile.style.top = `${window.scrollY}px`;
     navMenuMobile.style.display = 'block';
     navContainer.classList.toggle('opaque-color');
+    document.body.style.overflow = 'hidden';
   } else {
     navMenuMobile.style.display = 'none';
     navContainer.classList.toggle('opaque-color');
+    document.body.style.overflow = 'scroll';
   }
 }
