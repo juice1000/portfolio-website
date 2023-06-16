@@ -36,7 +36,7 @@ function collapseCard() {
   selectionMask.classList.remove('selection-active');
   setTimeout(() => selectionMask.classList.remove('selection-inactive'), 1000);
   focussed = false;
-  currNode = null;
+  currNode.focussing = false;
 }
 
 window.addEventListener('load', () => {
