@@ -2,11 +2,9 @@
   background-color: rgba(100, 100, 100, 0.7);
   height: 100vh;
   width: 100vw;
-  line-height: 1.7rem;
 }
 
 .about-subcontainer {
-  /* background-color: aqua; */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -22,22 +20,46 @@
   display: flex;
   margin-top: 3%;
   width: 100%;
-  align-items: center;
   justify-content: space-between;
-  /* background-color: grey; */
+  line-height: 2vw;
 }
 .about-left {
-  width: 40%;
-  font-size: 1.3vw;
+  font-size: 1.6vw;
   text-align: justify;
-  /* background-color: red; */
+  width: 45%;
 }
 .about-right {
   width: 50%;
   z-index: 2;
 }
+.about-content-low {
+  width: 100%;
+  line-height: 2vw;
+  font-size: 1.8vw;
+  text-align: justify;
+}
 
 .intro-gif {
   width: 100%;
   height: auto;
+}
+
+.about-mobile-content {
+  display: flex;
+  margin-top: 3%;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  text-align: justify;
+  line-height: 2.5vh;
+}
+.column-order {
+  flex-direction: column;
+}
+.reverse-order {
+  flex-direction: column-reverse;
+}
+
+.subtitle {
+  font-weight: 700;
 }

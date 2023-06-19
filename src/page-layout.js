@@ -7,6 +7,13 @@ let introContainer;
 let introLeft;
 let introRight;
 
+let aboutContent;
+let aboutLeft;
+let aboutRight;
+let aboutLow;
+
+let headers;
+
 window.addEventListener('load', () => {
   let windowHeight = window.innerHeight;
   let windowWidth = window.innerWidth;
@@ -21,6 +28,14 @@ window.addEventListener('load', () => {
   introLeft = document.querySelector('.intro-container-left');
   introRight = document.querySelector('.intro-container-right');
 
+  aboutContent = document.querySelector('.about-content');
+  aboutLeft = document.querySelector('.about-left');
+  aboutRight = document.querySelector('.about-right');
+  aboutLow = document.querySelector('.about-content-low');
+
+  headers = document.querySelectorAll('.header');
+
+  // initial check of window ratio
   if (windowWidth / windowHeight < 1.12) {
     // do the logic to create mobile layout
     toggleMobileClasses(true);
@@ -61,6 +76,12 @@ function changeNavigationIcon(icon) {
 }
 
 function toggleMobileClasses(isMobile) {
+  // headers
+  headers.forEach((header) => {
+    header.classList.toggle('header');
+    header.classList.toggle('header-mobile');
+  });
+
   // for the intro page
   introContainer.classList.toggle('intro-container');
   introContainer.classList.toggle('mobile-container');
@@ -73,6 +94,19 @@ function toggleMobileClasses(isMobile) {
   introRight.classList.toggle('intro-container-right');
   introRight.classList.toggle('mobile-container');
   introRight.classList.toggle('mobile-container-right');
+
+  // for the about me page
+  aboutContent.classList.toggle('about-content');
+  aboutContent.classList.toggle('about-mobile-content');
+  aboutContent.classList.toggle('reverse-order');
+  aboutLeft.classList.toggle('about-left');
+  aboutLeft.classList.toggle('about-subcontent');
+
+  aboutLow.classList.toggle('about-content-low');
+  aboutLow.classList.toggle('about-mobile-content');
+  aboutLow.classList.toggle('column-order');
+  aboutRight.classList.toggle('about-right');
+  aboutRight.classList.toggle('about-subcontent');
 
   // for the navbar
   if (isMobile) {
