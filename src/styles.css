@@ -1,7 +1,9 @@
+html,
 body {
   background-color: black;
   margin: 0;
   padding: 0;
+  width: 100vw;
   color: white;
   font-family: Arial, sans-serif;
   /* letter-spacing: 1px; */
@@ -49,7 +51,7 @@ h1 {
   top: 0;
   display: flex;
   align-items: center;
-  padding: 15px 15px 15px 0;
+  padding: 15px 0 15px 0;
   justify-content: flex-end;
   border-radius: 5px;
   width: 100%;
@@ -89,7 +91,7 @@ h1 {
   width: 27px;
   height: 4px;
   background-color: white;
-  margin: 6px 0;
+  margin: 6px 4vw;
   transition: 0.4s;
 }
 .change .bar1 {
@@ -112,7 +114,9 @@ h1 {
 
 .intermediary-page {
   height: 150vh;
-  width: 100vw;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 .black-grey {
   background: linear-gradient(180deg, black 0%, rgba(100, 100, 100, 0.7) 100%);
