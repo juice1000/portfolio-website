@@ -8,6 +8,11 @@ const particlesConfig = {
 $(document).ready(async function () {
   await loadFull(tsParticles, particlesConfig);
 
+  // if we have a mobile browser we will disable the repulse function
+  let windowHeight = window.innerHeight;
+  let windowWidth = window.innerWidth;
+  let windowRatio = windowWidth / windowHeight;
+
   $('#tsparticles')
     .particles()
     .init(
@@ -20,7 +25,7 @@ $(document).ready(async function () {
               mode: 'push',
             },
             onHover: {
-              enable: true,
+              enable: windowRatio > 1.2 ? true : false,
               mode: 'repulse',
             },
             resize: true,

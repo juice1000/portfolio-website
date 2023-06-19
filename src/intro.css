@@ -1,32 +1,51 @@
-#intro-container {
+.mobile-container-wrapper {
+  height: 100vh;
+  margin-top: -10%; /* looks nicer in mobile view */
+  flex-direction: column-reverse;
+}
+.mobile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1% 0 1% 0;
+  line-height: 0.5rem;
+}
+.mobile-container-right h1 {
+  font-size: 12vw;
+  line-height: 2rem;
+}
+.mobile-container-left {
+  flex-direction: column;
+}
+.mobile-container-left h1 {
+  font-size: 6vw;
+}
+
+.intro-container {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 2rem;
+  line-height: 1rem;
 }
-
 .intro-container-left {
   width: 60%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* background-color: grey; */
+  margin: 1% 0 1% 4vw;
 }
-.intro-container-left h1 {
-  margin-left: 4vw;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  opacity: 1;
-}
-.intro-container-left h1:nth-child(1) {
+.intro-container-left h1:nth-child(1),
+.mobile-container-left h1:nth-child(1) {
   animation: 10s fade1 linear infinite;
 }
-.intro-container-left h1:nth-child(2) {
+.intro-container-left h1:nth-child(2),
+.mobile-container-left h1:nth-child(2) {
   animation: 10s fade2 linear infinite;
 }
-.intro-container-left h1:nth-child(3) {
+.intro-container-left h1:nth-child(3),
+.mobile-container-left h1:nth-child(3) {
   animation: 10s fade3 linear infinite;
 }
 
@@ -90,16 +109,16 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* background-color: aqua; */
   width: 40%;
-}
-
-.intro-container-right h1 {
   margin-right: 4vw;
-  font-size: 6vw;
+}
+.intro-container-right h1,
+.mobile-container-right h1 {
   animation: 10s fade-right linear;
 }
-
+.intro-container-right h1 {
+  font-size: 6vw;
+}
 @keyframes fade-right {
   0%,
   60% {
