@@ -2,6 +2,7 @@ let focussed = false;
 let currNode;
 let projects;
 let projectsTop;
+let projectsTopContainer;
 let slideShowImages;
 let previews;
 let selectionMask;
@@ -32,6 +33,7 @@ function collapseCard() {
       previews[i].style.display = 'none';
     }
   }
+  setTimeout(() => (projectsTopContainer.style.gap = '5%'), 200);
   selectionMask.classList.add('selection-inactive');
   selectionMask.classList.remove('selection-active');
   setTimeout(() => selectionMask.classList.remove('selection-inactive'), 1000);
@@ -42,6 +44,7 @@ function collapseCard() {
 window.addEventListener('load', () => {
   projects = document.querySelectorAll('.projects-item');
   projectsTop = document.querySelectorAll('.projects-item-top');
+  projectsTopContainer = document.querySelector('.projects-item-container-top');
   slideShowImages = document.querySelectorAll('.slideShow');
   previews = document.querySelectorAll('.preview');
 
@@ -85,7 +88,8 @@ window.addEventListener('load', () => {
             previews[i].style.display = 'block';
           }
         }
-
+        // TODO: refactor to class with transition
+        setTimeout(() => (projectsTopContainer.style.gap = '0'), 500);
         selectionMask.classList.add('selection-active');
       } else {
         collapseCard();
