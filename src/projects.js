@@ -2,14 +2,12 @@ let focussed = false;
 let currNode;
 let projects;
 let projectsTop;
-let projectsTopContainer;
 let slideShowImages;
 let previews;
 
 window.addEventListener('load', () => {
   projects = document.querySelectorAll('.projects-item');
   projectsTop = document.querySelectorAll('.projects-item-top');
-  projectsTopContainer = document.querySelector('.projects-item-container-top');
   slideShowImages = document.querySelectorAll('.slideShow');
   previews = document.querySelectorAll('.preview');
 

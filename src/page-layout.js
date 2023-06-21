@@ -16,6 +16,11 @@ let headers;
 
 let selectionMask;
 
+let projectsSubcontainer;
+let projectsLeft;
+let projectsRight;
+let projectsTopContainer;
+
 window.addEventListener('load', () => {
   let windowHeight = window.innerHeight;
   let windowWidth = window.innerWidth;
@@ -40,6 +45,11 @@ window.addEventListener('load', () => {
   aboutLow = document.querySelector('.about-content-low');
 
   headers = document.querySelectorAll('.header');
+
+  projectsSubcontainer = document.querySelector('.projects-content');
+  projectsLeft = document.querySelector('.projects-left');
+  projectsRight = document.querySelector('.projects-right');
+  projectsTopContainer = document.querySelector('.projects-item-container-top');
 
   // initial check of window ratio
   if (windowWidth / windowHeight < 1.12) {
@@ -116,6 +126,16 @@ function toggleMobileClasses(isMobile) {
   aboutLow.classList.toggle('column-order');
   aboutRight.classList.toggle('about-right');
   aboutRight.classList.toggle('about-subcontent');
+
+  // for the projects page
+  projectsSubcontainer.classList.toggle('projects-content');
+  projectsSubcontainer.classList.toggle('projects-content-mobile');
+  projectsLeft.classList.toggle('projects-left');
+  projectsLeft.classList.toggle('projects-left-mobile');
+  projectsRight.classList.toggle('projects-right');
+  projectsRight.classList.toggle('projects-right-mobile');
+  projectsTopContainer.classList.toggle('projects-item-container-top');
+  projectsTopContainer.classList.toggle('projects-item-container-top-mobile');
 
   // for the navbar
   if (isMobile) {
