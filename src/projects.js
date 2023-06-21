@@ -5,7 +5,6 @@ let projectsTop;
 let projectsTopContainer;
 let slideShowImages;
 let previews;
-let selectionMask;
 
 function collapseCard() {
   for (let i = 0; i < projectsTop.length; i++) {
@@ -47,10 +46,6 @@ window.addEventListener('load', () => {
   projectsTopContainer = document.querySelector('.projects-item-container-top');
   slideShowImages = document.querySelectorAll('.slideShow');
   previews = document.querySelectorAll('.preview');
-
-  // we need to programatically change the height of the selection mask because it's not possible in CSS
-  selectionMask = document.getElementById('selection-mask');
-  selectionMask.style.height = `${document.body.clientHeight}px`;
 
   // check first if one item is in focus
 

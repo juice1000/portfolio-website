@@ -21,7 +21,9 @@ window.addEventListener('load', () => {
   let windowWidth = window.innerWidth;
   let isMobile = false;
 
+  // we need to programatically change the height of the selection mask because it's not possible in CSS
   selectionMask = document.getElementById('selection-mask');
+  selectionMask.style.height = `${document.body.clientHeight}px`;
 
   navContainer = document.querySelector('.navbar-container');
   navbarRight = document.getElementById('nav-info-right');
