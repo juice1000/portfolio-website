@@ -14,10 +14,14 @@ let aboutLow;
 
 let headers;
 
+let selectionMask;
+
 window.addEventListener('load', () => {
   let windowHeight = window.innerHeight;
   let windowWidth = window.innerWidth;
   let isMobile = false;
+
+  selectionMask = document.getElementById('selection-mask');
 
   navContainer = document.querySelector('.navbar-container');
   navbarRight = document.getElementById('nav-info-right');
@@ -42,6 +46,9 @@ window.addEventListener('load', () => {
     isMobile = true;
   }
   window.addEventListener('resize', () => {
+    // we have to adjust the selection style property from the projects
+    selectionMask.style.height = `${document.body.clientHeight}px`;
+
     windowHeight = window.innerHeight;
     windowWidth = window.innerWidth;
 
