@@ -70,6 +70,7 @@
   overflow-x: hidden;
   position: absolute;
   left: 100%;
+  cursor: pointer;
   animation: 12s slideshow infinite ease-in-out;
 }
 
@@ -79,6 +80,7 @@
   max-width: 100%;
   object-fit: contain;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .image-hide {

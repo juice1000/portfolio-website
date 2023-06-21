@@ -1,5 +1,10 @@
 let focussed = false;
-let currNode;
+let currNode = {
+  focussing: false,
+};
+let currImage = {
+  focussing: false,
+};
 let projects;
 let projectsTop;
 let slideShowImages;
@@ -11,7 +16,26 @@ window.addEventListener('load', () => {
   slideShowImages = document.querySelectorAll('.slideShow');
   previews = document.querySelectorAll('.preview');
 
-  // check first if one item is in focus
+  for (const image of slideShowImages) {
+    image.addEventListener('click', (e) => {
+      e.preventDefault();
+      currImage = e.target;
+      // we give the container the flag focussing
+      // all other containers will toggle their classes
+      if (!focussed) {
+        currImage.focussing = true;
+        focussed = true;
+
+        expandCard();
+
+        // TODO: refactor to class with transition
+        setTimeout(() => (projectsTopContainer.style.gap = '0'), 500);
+        selectionMask.classList.add('selection-active');
+      } else {
+        collapseCard();
+      }
+    });
+  }
 
   for (const project of projectsTop) {
     project.addEventListener('click', (e) => {
@@ -27,26 +51,8 @@ window.addEventListener('load', () => {
         currNode.focussing = true;
         focussed = true;
 
-        // this will result in O(n^2), dunno if there's a better way to do this
-        for (let i = 0; i < projectsTop.length; i++) {
-          // add logic here to stop slideshow
-          slideShowImages[i].classList.remove('slideShow');
-          slideShowImages[i].classList.add('image-hide');
+        expandCard();
 
-          if (!projectsTop[i].focussing) {
-            // make space for the expanding card
-            projectsTop[i].classList.add('projects-item-top-shrink');
-
-            // let the other cards slide out of the window
-            projects[i].classList.add('projects-item-hidden');
-          } else {
-            projects[i].classList.add('projects-item-invisible');
-            projectsTop[i].classList.add('projects-item-expanded');
-
-            // show preview of selected project
-            previews[i].style.display = 'block';
-          }
-        }
         // TODO: refactor to class with transition
         setTimeout(() => (projectsTopContainer.style.gap = '0'), 500);
         selectionMask.classList.add('selection-active');
@@ -58,9 +64,17 @@ window.addEventListener('load', () => {
 
   selectionMask.addEventListener('click', () => {
     // if yes we create an event listener for anywhere on the webpage so we can click the focus away
-    if (focussed && currNode) {
+    if (focussed && (currNode || currImage)) {
       collapseCard();
     }
+  });
+  previews.forEach((preview) => {
+    preview.addEventListener('click', () => {
+      // if yes we create an event listener for anywhere on the webpage so we can click the focus away
+      if (focussed && (currNode || currImage)) {
+        collapseCard();
+      }
+    });
   });
 
   function collapseCard() {
@@ -95,5 +109,30 @@ window.addEventListener('load', () => {
     setTimeout(() => selectionMask.classList.remove('selection-inactive'), 1000);
     focussed = false;
     currNode.focussing = false;
+    currImage.focussing = false;
+  }
+
+  function expandCard() {
+    // this will result in O(n^2), dunno if there's a better way to do this
+
+    for (let i = 0; i < projectsTop.length; i++) {
+      // add logic here to stop slideshow
+      slideShowImages[i].classList.remove('slideShow');
+      slideShowImages[i].classList.add('image-hide');
+      // console.log(slideShowImages[i].focussing);
+      if (!projectsTop[i].focussing && !slideShowImages[i].focussing) {
+        // make space for the expanding card
+        projectsTop[i].classList.add('projects-item-top-shrink');
+
+        // let the other cards slide out of the window
+        projects[i].classList.add('projects-item-hidden');
+      } else {
+        projects[i].classList.add('projects-item-invisible');
+        projectsTop[i].classList.add('projects-item-expanded');
+
+        // show preview of selected project
+        previews[i].style.display = 'block';
+      }
+    }
   }
 });
