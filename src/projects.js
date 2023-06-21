@@ -6,40 +6,6 @@ let projectsTopContainer;
 let slideShowImages;
 let previews;
 
-function collapseCard() {
-  for (let i = 0; i < projectsTop.length; i++) {
-    slideShowImages[i].classList.add('slideShow');
-    slideShowImages[i].classList.remove('image-hide');
-    if (projectsTop[i].classList.contains('projects-item-top-shrink')) {
-      projectsTop[i].classList.add('projects-item-top-expand-from-zero');
-      setTimeout(() => projectsTop[i].classList.remove('projects-item-top-shrink'), 1000);
-      setTimeout(() => projectsTop[i].classList.remove('projects-item-top-expand-from-zero'), 1000);
-      projects[i].classList.add('projects-item-slide-in');
-      setTimeout(() => projects[i].classList.remove('projects-item-slide-in'), 1000);
-      projects[i].classList.remove('projects-item-hidden');
-    }
-    if (projectsTop[i].classList.contains('projects-item-expanded')) {
-      projectsTop[i].scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
-      projectsTop[i].classList.add('projects-item-shrink');
-      setTimeout(() => projects[i].classList.remove('projects-item-invisible'), 1000);
-      setTimeout(() => projectsTop[i].classList.remove('projects-item-expanded'), 1000);
-      setTimeout(() => projectsTop[i].classList.remove('projects-item-shrink'), 1000);
-
-      previews[i].style.display = 'none';
-    }
-  }
-  setTimeout(() => (projectsTopContainer.style.gap = '5%'), 200);
-  selectionMask.classList.add('selection-inactive');
-  selectionMask.classList.remove('selection-active');
-  setTimeout(() => selectionMask.classList.remove('selection-inactive'), 1000);
-  focussed = false;
-  currNode.focussing = false;
-}
-
 window.addEventListener('load', () => {
   projects = document.querySelectorAll('.projects-item');
   projectsTop = document.querySelectorAll('.projects-item-top');
@@ -98,4 +64,38 @@ window.addEventListener('load', () => {
       collapseCard();
     }
   });
+
+  function collapseCard() {
+    for (let i = 0; i < projectsTop.length; i++) {
+      slideShowImages[i].classList.add('slideShow');
+      slideShowImages[i].classList.remove('image-hide');
+      if (projectsTop[i].classList.contains('projects-item-top-shrink')) {
+        projectsTop[i].classList.add('projects-item-top-expand-from-zero');
+        setTimeout(() => projectsTop[i].classList.remove('projects-item-top-shrink'), 1000);
+        setTimeout(() => projectsTop[i].classList.remove('projects-item-top-expand-from-zero'), 1000);
+        projects[i].classList.add('projects-item-slide-in');
+        setTimeout(() => projects[i].classList.remove('projects-item-slide-in'), 1000);
+        projects[i].classList.remove('projects-item-hidden');
+      }
+      if (projectsTop[i].classList.contains('projects-item-expanded')) {
+        projectsTop[i].scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        });
+        projectsTop[i].classList.add('projects-item-shrink');
+        setTimeout(() => projects[i].classList.remove('projects-item-invisible'), 1000);
+        setTimeout(() => projectsTop[i].classList.remove('projects-item-expanded'), 1000);
+        setTimeout(() => projectsTop[i].classList.remove('projects-item-shrink'), 1000);
+
+        previews[i].style.display = 'none';
+      }
+    }
+    setTimeout(() => (projectsTopContainer.style.gap = '5%'), 200);
+    selectionMask.classList.add('selection-inactive');
+    selectionMask.classList.remove('selection-active');
+    setTimeout(() => selectionMask.classList.remove('selection-inactive'), 1000);
+    focussed = false;
+    currNode.focussing = false;
+  }
 });
