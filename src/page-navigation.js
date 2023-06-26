@@ -23,5 +23,5 @@ window.addEventListener('load', () => {
   });
 
   // temporarily enabeled for development
-  document.getElementById('timeline-container').scrollIntoView();
+  // document.getElementById('timeline-container').scrollIntoView();
 });
