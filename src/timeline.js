@@ -10,6 +10,8 @@ window.addEventListener('load', () => {
   const expressGroup = document.getElementById('expressgroup');
   const uflo = document.getElementById('uflo');
   const research = document.getElementById('tu-research');
+  const cyanite = document.getElementById('cyanite');
+  const tuBerlin = document.getElementById('tu-berlin');
   const lineOptions = { color: 'white', size: 4, dash: { animation: true }, startSocket: 'top', endSocket: 'bottom' };
 
   const line = new LeaderLine(fluentai, vibevote, lineOptions);
@@ -21,6 +23,8 @@ window.addEventListener('load', () => {
   const line7 = new LeaderLine(expressGroup, listify, lineOptions);
   const line8 = new LeaderLine(uflo, expressGroup, lineOptions);
   const line9 = new LeaderLine(research, uflo, lineOptions);
+  const line10 = new LeaderLine(cyanite, research, lineOptions);
+  const line11 = new LeaderLine(tuBerlin, cyanite, lineOptions);
 
-  lines.push(line, line2, line3, line4, line5, line6, line7, line8, line9);
+  lines.push(line, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11);
 });
