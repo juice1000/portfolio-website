@@ -92,6 +92,7 @@ window.addEventListener('load', () => {
         setTimeout(() => projectsTop[i].classList.remove('projects-item-shrink'), 1000);
 
         preview.src = '';
+        preview.style.display = 'none';
       }
     }
     setTimeout(() => (projectsTopContainer.style.gap = '5%'), 200);
@@ -123,6 +124,7 @@ window.addEventListener('load', () => {
 
         // show preview of selected project
         preview.src = 'assets/images/' + slideShowImages[i].id + '.gif';
+        preview.style.display = 'block';
         preview.addEventListener('click', () => {
           // if yes we create an event listener for anywhere on the webpage so we can click the focus away
           if (focussed && (currNode || currImage)) {
