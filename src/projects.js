@@ -8,13 +8,12 @@ let currImage = {
 let projects;
 let projectsTop;
 let slideShowImages;
-let previews;
 
 window.addEventListener('load', () => {
   projects = document.querySelectorAll('.projects-item');
   projectsTop = document.querySelectorAll('.projects-item-top');
   slideShowImages = document.querySelectorAll('.slideShow');
-  previews = document.querySelectorAll('.preview');
+  const preview = document.querySelector('#preview');
 
   for (const image of slideShowImages) {
     image.addEventListener('click', (e) => {
@@ -68,14 +67,6 @@ window.addEventListener('load', () => {
       collapseCard();
     }
   });
-  previews.forEach((preview) => {
-    preview.addEventListener('click', () => {
-      // if yes we create an event listener for anywhere on the webpage so we can click the focus away
-      if (focussed && (currNode || currImage)) {
-        collapseCard();
-      }
-    });
-  });
 
   function collapseCard() {
     for (let i = 0; i < projectsTop.length; i++) {
@@ -100,7 +91,7 @@ window.addEventListener('load', () => {
         setTimeout(() => projectsTop[i].classList.remove('projects-item-expanded'), 1000);
         setTimeout(() => projectsTop[i].classList.remove('projects-item-shrink'), 1000);
 
-        previews[i].style.display = 'none';
+        preview.src = '';
       }
     }
     setTimeout(() => (projectsTopContainer.style.gap = '5%'), 200);
@@ -131,7 +122,13 @@ window.addEventListener('load', () => {
         projectsTop[i].classList.add('projects-item-expanded');
 
         // show preview of selected project
-        previews[i].style.display = 'block';
+        preview.src = 'assets/images/' + slideShowImages[i].id + '.gif';
+        preview.addEventListener('click', () => {
+          // if yes we create an event listener for anywhere on the webpage so we can click the focus away
+          if (focussed && (currNode || currImage)) {
+            collapseCard();
+          }
+        });
       }
     }
   }
