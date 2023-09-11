@@ -45,7 +45,7 @@
 
 .projects-left,
 .projects-left-mobile {
-  z-index: 4;
+  z-index: 10;
   display: flex;
   justify-content: center;
   position: relative;
@@ -157,7 +157,7 @@
 }
 .projects-item-container-top,
 .projects-item-container-top-mobile {
-  z-index: 4;
+  z-index: 10;
   position: absolute;
 }
 .projects-item-container-top {

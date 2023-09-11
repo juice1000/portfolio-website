@@ -30,7 +30,7 @@
 }
 .about-right {
   width: 50%;
-  z-index: 2;
+  z-index: 10;
   display: flex;
   justify-content: flex-end;
   align-items: center;

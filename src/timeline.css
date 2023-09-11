@@ -1,41 +1,82 @@
 #timeline-container {
-  background-color: rgba(80, 145, 0, 0.3);
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+  background-color: rgb(12, 48, 0);
   height: 100%;
   width: 100vw;
 }
-#timeline-container a {
-  color: white;
-  cursor: pointer;
-  z-index: 3;
-}
-#timeline-container span {
-  z-index: 3;
-}
 
 .timeline-subcontainer {
-  /* background-color: aqua; */
   height: 100%;
-  display: flex;
-  flex-direction: column;
   margin-left: 4vw;
   margin-right: 4vw;
 }
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
 .timeline-spacer {
-  margin-top: 30%;
+  margin-top: 10%;
+}
+#connector-line {
+  position: absolute;
+  z-index: 4;
+  border-left: 2px solid white;
+  height: 100%;
+}
+#connector-mask {
+  position: sticky;
+  z-index: 5;
+  background-color: rgb(12, 48, 0);
+  height: 40vh;
+  width: 100%;
+  bottom: 0;
+}
+
+.timeline-dates-container {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 6fr 3fr 6fr;
+  justify-content: space-between;
+  align-items: space-between;
+  width: 100%;
+  z-index: 6;
+}
+
+.timeline-dates-container-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-date {
+  z-index: 6;
+  height: 30px;
+  width: 30px;
+  padding: 50px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+  color: black;
+  font-weight: 700;
 }
 
 .timeline-card-left,
 .timeline-card-right {
-  z-index: 3;
-  width: 40%;
+  z-index: 6;
+  width: 100%;
   height: 100%;
   border-radius: 10px;
   border: 1px solid;
   cursor: pointer;
   overflow: hidden;
-}
-.timeline-card-right {
-  margin-left: 60%;
 }
 
 .timeline-card-mobile {
@@ -59,7 +100,5 @@
   margin-left: 1.5vw;
   margin-right: 1.5vw;
   overflow: hidden;
-}
-.timeline-card-content li {
-  font-size: small;
+  font-size: large;
 }
