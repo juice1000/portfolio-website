@@ -59,7 +59,10 @@ window.addEventListener('load', () => {
   if (windowWidth / windowHeight < 1.12) {
     // do the logic to create mobile layout
     toggleMobileClasses(true);
+    alignTimelineObjects(true);
     isMobile = true;
+  } else {
+    alignTimelineObjects(false);
   }
 
   window.addEventListener('resize', () => {
@@ -73,12 +76,14 @@ window.addEventListener('load', () => {
       if (!isMobile) {
         // do the logic to create mobile layout
         toggleMobileClasses(true);
+        alignTimelineObjects(true);
         isMobile = true;
       }
     } else {
       if (isMobile) {
         // revert the logic for mobile layout
         toggleMobileClasses(false);
+        alignTimelineObjects(false);
         isMobile = false;
       }
     }
@@ -154,5 +159,32 @@ function toggleMobileClasses(isMobile) {
     }
     navbarCollapsed.style.display = 'none';
     navMenuMobile.style.display = 'none';
+  }
+}
+
+function alignTimelineObjects(isMobile) {
+  if (!isMobile) {
+    timelineDivContent.forEach((timelineDiv) => {
+      const timelineDatesContainer = document.createElement('div');
+      timelineDatesContainer.classList.add('timeline-dates-container');
+
+      const timelineDatesContainerCenter = document.createElement('div');
+      timelineDatesContainerCenter.classList.add('timeline-dates-container-center');
+      timelineDatesContainerCenter.innerHTML = `<div class="timeline-date">${timelineDiv.displayDate}</div>`;
+
+      if (!timelineDiv.alignLeft) {
+        const timelineEmptyDiv = document.createElement('div');
+        timelineDatesContainer.appendChild(timelineEmptyDiv);
+        timelineDatesContainer.appendChild(timelineDatesContainerCenter);
+        timelineDatesContainer.appendChild(timelineDiv);
+      } else {
+        timelineDatesContainer.appendChild(timelineDiv);
+        timelineDatesContainer.appendChild(timelineDatesContainerCenter);
+      }
+      const timelineSpacer = document.createElement('div');
+      timelineSpacer.classList.add('timeline-spacer');
+      timelineContent.appendChild(timelineSpacer);
+      timelineContent.appendChild(timelineDatesContainer);
+    });
   }
 }

@@ -2,7 +2,10 @@ let timelineObjects = [
   {
     alignLeft: true,
     title: `VibeVote`,
-    duration: `May, 2023 - present`,
+    monthStarts: `May`,
+    monthEnds: `Present`,
+    yearStarts: ``,
+    yearEnds: `2023`,
     descriptionItems: [
       `Contributed to a live voting App for Spotify playlists in a pair project`,
       `Fully covered Backend Testing with Unit Tests and Integration Tests using Jest`,
@@ -13,7 +16,10 @@ let timelineObjects = [
   {
     alignLeft: false,
     title: `fluent.ai`,
-    duration: `May, 2023`,
+    monthStarts: ``,
+    monthEnds: `May`,
+    yearStarts: ``,
+    yearEnds: `2023`,
     descriptionItems: [
       `Built a highly customizable AI powered automation tool in a team of four developers`,
       `Managed setup of Cloud Architecture using Firebase coupled with Microservices with NX`,
@@ -24,7 +30,10 @@ let timelineObjects = [
   {
     alignLeft: true,
     title: `Pitchify`,
-    duration: `April, 2023`,
+    monthStarts: ``,
+    monthEnds: `April`,
+    yearStarts: ``,
+    yearEnds: `2023`,
     descriptionItems: [
       `Developed a Mobile Music Streaming App using React Native and Websockets`,
       `Enhanced the App's value by adding advanced functionality with audio pitch manipulation`,
@@ -33,7 +42,10 @@ let timelineObjects = [
   {
     alignLeft: false,
     title: `Codeworks`,
-    duration: `February - April, 2023`,
+    monthStarts: `February`,
+    monthEnds: `April`,
+    yearStarts: ``,
+    yearEnds: `2023`,
     descriptionItems: [
       `Immersive Fullstack Development Bootcamp with 72 hours of lessons per week`,
       `Learned Advanced Javascript programming methods, like object prototypes, higher order functions, asynchronous programming and all the other quirks of the programming language`,
@@ -51,13 +63,19 @@ let timelineObjects = [
   {
     alignLeft: true,
     title: `AI Fashion Designer`,
-    duration: `February, 2023`,
+    monthStarts: ``,
+    monthEnds: `February`,
+    yearStarts: ``,
+    yearEnds: `2023`,
     descriptionItems: [`Developed a Full-Stack App utilizing Generative AI to prompt any t-shirt design`],
   },
   {
     alignLeft: false,
     title: `AI Fashion Designer`,
-    duration: `January, 2023`,
+    monthStarts: ``,
+    monthEnds: `January`,
+    yearStarts: ``,
+    yearEnds: `2023`,
     descriptionItems: [
       `Developed a Full-Stack App that scans through any public playlist on Spotify and downloads the tracks`,
       `App helps people without Spotify premium subscription to use their songs offline`,
@@ -67,7 +85,10 @@ let timelineObjects = [
   {
     alignLeft: true,
     title: `ExpressGroup`,
-    duration: `May, 2021 - December 2023`,
+    monthStarts: `May`,
+    monthEnds: `December`,
+    yearStarts: `2021`,
+    yearEnds: `2022`,
     descriptionItems: [
       `Managed ETL processes & reimplemented Data Warehouse using dbt and BigQuery, reduced original database costs by more than 90%`,
       `Contributed to Microservices codebase coupled with Firebase Cloud Functions`,
@@ -79,7 +100,10 @@ let timelineObjects = [
   {
     alignLeft: false,
     title: `Uflo`,
-    duration: `March, 2021`,
+    monthStarts: ``,
+    monthEnds: `March`,
+    yearStarts: ``,
+    yearEnds: `2021`,
     descriptionItems: [
       `Developed MVP for Urban Planning startup to help users build fast prototypes in first product stage`,
       `Utilized CSV files with adjacency requirements for data-driven alignment of objects and leaflet for display on world map at any given location`,
@@ -89,7 +113,10 @@ let timelineObjects = [
   {
     alignLeft: true,
     title: `Student Research Assistant`,
-    duration: `September, 2020 - August, 2021`,
+    monthStarts: `September`,
+    monthEnds: `August`,
+    yearStarts: `2020`,
+    yearEnds: `2021`,
     descriptionItems: [
       `Conducted Machine Learning research in Quality Science`,
       `Contributed to paper publications, created interactive content for congresses (e.g. VDI congress)`,
@@ -102,7 +129,10 @@ let timelineObjects = [
   {
     alignLeft: false,
     title: `Cyanite`,
-    duration: `May, 2020 - September, 2021`,
+    monthStarts: `May`,
+    monthEnds: `September`,
+    yearStarts: ``,
+    yearEnds: `2020`,
     descriptionItems: [
       `Modelled several Machine Learning prototypes to classify music eras`,
       `Generated and managed audio data library with pandas, created spectograms from audio`,
@@ -114,7 +144,10 @@ let timelineObjects = [
   {
     alignLeft: true,
     title: `Bosch ASEAN`,
-    duration: `September, 2019 - March, 2020`,
+    monthStarts: `September`,
+    monthEnds: `March`,
+    yearStarts: `2019`,
+    yearEnds: `2020`,
     descriptionItems: [
       `Linux OS Development for Bosch’s Linux distribution (Bash and Python)`,
       `Deployment using Jenkins`,
@@ -127,7 +160,10 @@ let timelineObjects = [
   {
     alignLeft: false,
     title: `Technical University Berlin`,
-    duration: `April, 2018 - August, 2021`,
+    monthStarts: `April`,
+    monthEnds: `August`,
+    yearStarts: `2018`,
+    yearEnds: `2021`,
     descriptionItems: [
       `B.Sc. Computational Engineering Science, Mechanical Engineering meets Computer Science, Specialization in Data Science and Machine Learning`,
       `Bachelor thesis in Advanced Reinforcement Learning`,
@@ -137,3 +173,41 @@ let timelineObjects = [
     ],
   },
 ];
+
+// create divs for timeline content
+const timelineDivContent = timelineObjects.map((timelineObject) => {
+  const timelineCard = document.createElement('div');
+  timelineCard.classList.add('timeline-card');
+
+  let timelineDurationString = '';
+  let timeLineDisplayDate = '';
+  if (timelineObject.monthStarts) {
+    timelineDurationString = timelineDurationString + timelineObject.monthStarts;
+    if (timelineObject.yearStarts) {
+      timelineDurationString = timelineDurationString + ', ' + timelineObject.yearStarts;
+      timeLineDisplayDate = `${timelineObject.monthStarts} ${timelineObject.yearStarts}`;
+    } else {
+      timeLineDisplayDate = `${timelineObject.monthStarts} ${timelineObject.yearEnds}`;
+    }
+    timelineDurationString = timelineDurationString + ' - ';
+  }
+  timelineDurationString = timelineDurationString + timelineObject.monthEnds + ', ' + timelineObject.yearEnds;
+
+  timelineCard.innerHTML = `<h2>${timelineObject.title}</h2><span>${timelineDurationString}</span`;
+
+  const timelineCardList = document.createElement('ul');
+  timelineCardList.innerHTML = timelineObject.descriptionItems.map((item) => `<li>${item}</li>`);
+
+  timelineCard.appendChild(timelineCardList);
+  timelineCard.alignLeft = timelineObject.alignLeft;
+
+  if (timeLineDisplayDate.length > 0 && timelineObject.monthEnds !== 'Present') {
+    timelineCard.displayDate = timeLineDisplayDate;
+  } else if (timelineObject.monthEnds === 'Present') {
+    timelineCard.displayDate = 'Present';
+  } else {
+    timelineCard.displayDate = `${timelineObject.monthEnds} ${timelineObject.yearEnds}`;
+  }
+
+  return timelineCard;
+});
