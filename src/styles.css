@@ -93,7 +93,7 @@ body {
   width: 27px;
   height: 4px;
   background-color: white;
-  margin: 6px 4vw;
+  margin: 6px 2rem;
   transition: 0.4s;
 }
 .change .bar1 {
@@ -127,4 +127,35 @@ body {
 }
 .blue-green {
   background: linear-gradient(180deg, rgba(142, 142, 255, 0.3) 0%, rgba(80, 145, 0, 0.3) 100%);
+}
+
+.nav-seperator {
+  border-left: 2px solid white;
+  height: 35px;
+}
+
+.nav-info-external-links {
+  margin-right: 2vw;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-icon {
+  height: 28px;
+  width: auto;
+  border-radius: 5px;
+}
+.navbar-icon:hover {
+  box-shadow: white 1px 0 10px;
+}
+.navbar-icon-irregular-size-container {
+  display: flex;
+  align-items: center;
+}
+.navbar-icon-irregular-size:hover {
+  text-align: center;
+  display: block;
+  margin: auto;
+  box-shadow: white 1px 0 10px;
 }
