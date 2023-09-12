@@ -163,6 +163,7 @@ function toggleMobileClasses(isMobile) {
 }
 
 function alignTimelineObjects(isMobile) {
+  timelineContent.innerHTML = '';
   if (!isMobile) {
     timelineDivContent.forEach((timelineDiv) => {
       const timelineDatesContainer = document.createElement('div');
@@ -181,6 +182,21 @@ function alignTimelineObjects(isMobile) {
         timelineDatesContainer.appendChild(timelineDiv);
         timelineDatesContainer.appendChild(timelineDatesContainerCenter);
       }
+      const timelineSpacer = document.createElement('div');
+      timelineSpacer.classList.add('timeline-spacer');
+      timelineContent.appendChild(timelineSpacer);
+      timelineContent.appendChild(timelineDatesContainer);
+
+      const connectorLine = document.createElement('div');
+      connectorLine.id = 'connector-line';
+      timelineContent.appendChild(connectorLine);
+    });
+  } else {
+    timelineDivContent.forEach((timelineDiv) => {
+      const timelineDatesContainer = document.createElement('div');
+      timelineDatesContainer.classList.add('timeline-dates-container-mobile');
+      timelineDatesContainer.appendChild(timelineDiv);
+
       const timelineSpacer = document.createElement('div');
       timelineSpacer.classList.add('timeline-spacer');
       timelineContent.appendChild(timelineSpacer);
