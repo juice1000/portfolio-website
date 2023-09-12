@@ -178,6 +178,8 @@ let timelineObjects = [
 const timelineDivContent = timelineObjects.map((timelineObject) => {
   const timelineCard = document.createElement('div');
   timelineCard.classList.add('timeline-card');
+  const timelineCardContent = document.createElement('div');
+  timelineCardContent.classList.add('timeline-card-content');
 
   let timelineDurationString = '';
   let timeLineDisplayDate = '';
@@ -192,13 +194,13 @@ const timelineDivContent = timelineObjects.map((timelineObject) => {
     timelineDurationString = timelineDurationString + ' - ';
   }
   timelineDurationString = timelineDurationString + timelineObject.monthEnds + ', ' + timelineObject.yearEnds;
-
-  timelineCard.innerHTML = `<h2>${timelineObject.title}</h2><span>${timelineDurationString}</span`;
+  timelineCardContent.innerHTML = `<h2>${timelineObject.title}</h2><span>${timelineDurationString}</span`;
 
   const timelineCardList = document.createElement('ul');
   timelineCardList.innerHTML = timelineObject.descriptionItems.map((item) => `<li>${item}</li>`).join('');
 
-  timelineCard.appendChild(timelineCardList);
+  timelineCardContent.appendChild(timelineCardList);
+  timelineCard.appendChild(timelineCardContent);
   timelineCard.alignLeft = timelineObject.alignLeft;
 
   if (timeLineDisplayDate.length > 0 && timelineObject.monthEnds !== 'Present') {
