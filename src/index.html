@@ -7,11 +7,11 @@
         <title>Julien Look</title>
         <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="intro.css">
-        <link rel="stylesheet" href="about.css">
-        <link rel="stylesheet" href="projects.css">
-        <link rel="stylesheet" href="timeline.css">
+        <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="stylesheets/intro.css">
+        <link rel="stylesheet" href="stylesheets/about.css">
+        <link rel="stylesheet" href="stylesheets/projects.css">
+        <link rel="stylesheet" href="stylesheets/timeline.css">
 
         <!-- jquery -->
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"
@@ -21,22 +21,16 @@
         <script src="https://cdn.jsdelivr.net/npm/tsparticles/tsparticles.bundle.min.js"></script>
         <!-- include jquery wrapper -->
         <script src="https://cdn.jsdelivr.net/npm/jquery-particles"></script>
-        <!-- scripts that do client logic -->
-        <script src="./particle-background.js"></script>
 
 
-        <!-- anim event for repositioning of leader lines -->
-        <!-- <script src="anim-event.min.js"></script> -->
-        <!-- leader line package -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leader-line/1.0.3/leader-line.min.js"
-            integrity="sha512-aFBNsI3+D6ObLLtyKwdZPZzDbcCC6+Bh+2UNV8HC0R95BpcBT+dmmZ5NMpJi/Ic8uO0W7FGcg33IfuHg+7Ryew=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- data for client logic -->
+        <script src="./data/timeline-content.js"></script>
 
-
-        <script src="./page-layout.js"></script>
-        <script src="./projects.js"></script>
-        <script src="./page-navigation.js"></script>
-        <script src="./timeline.js"></script>
+        <!-- scripts for client logic -->
+        <script src="./scripts/particle-background.js"></script>
+        <script src="./scripts/page-layout.js"></script>
+        <script src="./scripts/projects.js"></script>
+        <script src="./scripts/page-navigation.js"></script>
 
 
     </head>
@@ -47,7 +41,7 @@
 
 
 
-        <div id="tsparticles"></div>
+        <div id="tsparticles" style="position: absolute; z-index: 6;"></div>
         <div id="selection-mask"></div>
 
         <div id="navmenu-mobile">
@@ -302,7 +296,7 @@
                             </div>
                             <div class="projects-item-top">
                                 <div class="projects-item-content">
-                                    <h2>Listify</h2>
+                                    <h2>Pitchify</h2>
                                     <h5>A mobile streaming App that plays music from YouTube and grants users the power
                                         to effortlessly
                                         manipulate pitch and speed to suit their
@@ -351,7 +345,7 @@
                             </div>
                             <div class="projects-item">
                                 <div class="projects-item-content">
-                                    <h2>Listify</h2>
+                                    <h2>Pitchify</h2>
                                     <!-- <h5>Small Description</h5> -->
                                 </div>
                             </div>
@@ -374,233 +368,46 @@
         <div id="timeline-container">
             <div class="timeline-subcontainer">
                 <h1 class="header">Timeline. . .</h1>
-                <!-- <h2>Coming soon!</h2>
-                <span>In the meantime feel free to
-                    <a href="mailto:julienlook.professional@gmail.com?subject=Need a Freelance Developer!">reach out to me!</a>
-                </span> -->
-                <div class="timeline-card-left" id="vibevote">
-                    <div class="timeline-card-content">
-                        <h2>VibeVote</h2>
-                        <span>May, 2023 - present</span>
-                        <ul>
-                            <li>Contributed to a live voting App for Spotify playlists in a pair project</li>
-                            <li>Fully covered Backend Testing with Unit Tests and Integration Tests using Jest</li>
-                            <li>Covered whole user journey using E2E Testing with Cypress</li>
-                            <li>Increased scalability and testability by restructuring Backend to modular services</li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-right" id="fluentai">
-                    <div class="timeline-card-content">
-                        <h2>fluent.ai</h2>
-                        <span>May, 2023</span>
-                        <ul>
-                            <li>Built a highly customizable AI powered automation tool in a team of four developers</li>
-                            <li>Managed setup of Cloud Architecture using Firebase coupled with Microservices with NX
-                            </li>
-                            <li>Integrated seamless UI interactions, ensured efficient data transfer between states &
-                                database</li>
-                            <li>Implemented Live Collaboration to enable multiple users to collaborate on one flow</li>
-                            <li>Demo on request</li>
-
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-left" id="pitchify">
-                    <div class="timeline-card-content">
-                        <h2>Pitchify</h2>
-                        <span>April, 2023</span>
-                        <ul>
-                            <li>Developed a Mobile Music Streaming App using React Native and Websockets</li>
-                            <li>Enhanced the App’s value by adding advanced functionality with audio pitch manipulation
-                            </li>
-                            <li>Demo on Request</li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-right" id="codeworks">
-                    <div class="timeline-card-content">
-                        <h2>Codeworks</h2>
-                        <span>February - April, 2023</span>
-                        <ul>
-                            <li>Immersive Fullstack Development Bootcamp with 72 hours of lessons per week</li>
-                            <li>Learned Advanced Javascript programming methods, like object prototypes, higher order
-                                functions, asynchronous
-                                programming and all the other quirks of the programming language</li>
-                            <li>Learned about advanced Web Development, beginning with networking theory, continuing
-                                with programmin with REST,
-                                built HTTP servers from scratch</li>
-                            <li>Learned advanced HTML and CSS, concluding to copy any website within a few hours</li>
-                            <li>Integrated multiple relational and non-relational databases and ORMs into existing
-                                servers</li>
-                            <li>Did Unit Testing, Integration Testing and learned about coverage</li>
-                            <li>Built apps in different architectural design patterns such as MVC or SOA</li>
-                            <li>Applied security methods to existing apps</li>
-                            <li>Improved accessibility score of websites</li>
-                            <li>Learned React and Angular and built multiple apps in both frameworks, concluding to
-                                build a clean full-stack app in a
-                                few hours</li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-left" id="ai-fashion">
-                    <div class="timeline-card-content">
-                        <h2>AI Fashion Designer</h2>
-                        <span>February, 2023</span>
-                        <ul>
-                            <li>Developed a Full-Stack App utilizing Generative AI to prompt any t-shirt design</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-right" id="listify">
-                    <div class="timeline-card-content">
-                        <h2>Listify</h2>
-                        <span>January, 2023</span>
-                        <ul>
-                            <li>Developed a Full-Stack App that scans through any public playlist on Spotify and
-                                downloads the tracks</li>
-                            <li>App helps people without Spotify premium subscription to use their songs offline</li>
-                            <li>Focused on efficient Webscraping methods to reduce download time</li>
-                        </ul>
-                    </div>
-                </div>
+                <div>
+                    <div id="timeline-content">
 
 
 
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-left" id="expressgroup">
-                    <div class="timeline-card-content">
-                        <h2>ExpressGroup</h2>
-                        <span>May, 2021 - December, 2022</span>
-                        <ul>
-                            <li>Managed ETL processes & reimplemented Data Warehouse using dbt and BigQuery, reduced
-                                original database costs by more
-                                than 90%</li>
-                            <li>Contributed to Microservices codebase coupled with Firebase Cloud Functions</li>
-                            <li>Accelerated Customer Success workflow with Chatbot that responds to customer inquiries
-                            </li>
-                            <li>Leveraged Machine Learning tools to automate document screening and cut labour cost by
-                                90%</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-right" id="uflo">
-                    <div class="timeline-card-content">
-                        <h2>Uflo</h2>
-                        <span>March, 2021</span>
-                        <ul>
-                            <li>
-                                Developed MVP for Urban Planning startup to help users build fast prototypes in first
-                                product stage
-                            </li>
-                            <li>Utilized CSV files with adjacency requirements for data-driven alignment of objects and
-                                leaflet for display on world
-                                map at any given location</li>
-                            <li>Demo on Request</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-left" id="tu-research">
-                    <div class="timeline-card-content">
-                        <h2>Student Research Assistant</h2>
-                        <span>September, 2020 - August, 2021</span>
-                        <ul>
-                            <li>Conducted Machine Learning research in Quality Science</li>
-                            <li>Contributed to paper publications, created interactive content for congresses (e.g. VDI
-                                congress)</li>
-                            <li>Implemented MLOps: Automated workflow from statistical feature selection to model
-                                optimization</li>
-                            <li>Tutored ~300 students in the fundamentals of Data Analytics, conducted weekly live
-                                coding sessions</li>
-                            <li>Graded final case study projects of students</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-right" id="cyanite">
-                    <div class="timeline-card-content">
-                        <h2>Cyanite</h2>
-                        <span>May, 2020 - September, 2020</span>
-                        <ul>
-                            <li>Modelled several Machine Learning prototypes to classify music eras</li>
-                            <li>Generated and managed audio data library with pandas, created spectograms from audio
-                            </li>
-                            <li>Implemented vanilla Machine Learning (MLP), Image Classification (CNN) and Time Series
-                                Classification (Recurrent CNN) models to analyse audio data</li>
-                            <li>Programatically tuned hyperparameters during model evaluation step to find optimum</li>
-                        </ul>
-                        <!-- <li>Implementation in Python, pandas, matplotlib, seaborn, numpy, </li> -->
-                        <!-- TODO: create tags that can be filtered through searchbar -->
-                    </div>
-                </div>
-
-                <div class="timeline-spacer"></div>
-                <div class="timeline-card-left" id="tu-berlin">
-                    <div class="timeline-card-content">
-                        <h2>Technical University Berlin</h2>
-                        <span>April, 2018 - August, 2021</span>
-
-
-                        <span>B.Sc. Computational Engineering Science, Mechanical Engineering meets Computer Science,
-                            Specialization in Data Science and Machine Learning
-                        </span>
-
-                        <br />
-                        Data Science related projects:
-                        <ul>
-
-                            <li>Conducted case study in Quality Science course, developed apps for visualization
-                            </li>
-                            <li>Project in Reinforcement Learning; enabled airhockey playing robot arm to develop game
-                                strategies</li>
-                            <li>Bachelor thesis in Advanced Reinforcement Learning</li>
-                        </ul>
-
-                        Modules in Computer-aided Mathematics:
-                        <ul>
-
-                            <li>Studied one-year course in Algorithmic Mathematics (Python)</li>
-                            <li>Conducted projects in Control Engineering and Numerical Analysis (Matlab)</li>
-                        </ul>
-                        Other Computer Science courses:
-                        <ul>
-                            <li>Object oriented Programming (C++)</li>
-                            <li>Data structures (Java)</li>
-                            <li>Systemprogramming (C)</li>
-                            <li>Engineering Data Analytics (R)</li>
-                        </ul>
-                        <!-- <li>Implementation in Python, pandas, matplotlib, seaborn, numpy, </li> -->
-                        <!-- TODO: create tags that can be filtered through searchbar -->
 
                     </div>
+                    <div id="connector-mask"></div>
                 </div>
-
-
-                <!-- we will remove this when we have a contact page -->
-                <div class="timeline-spacer"></div>
-
 
             </div>
+
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </body>
 
 </html>

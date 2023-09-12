@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   color: white;
-  font-family: 'Inter', sans-serif, 'open-sans', Helvetica, Arial;
+  font-family: sans-serif, 'open-sans', Helvetica, Arial;
   /* letter-spacing: 1px; */
 }
 
@@ -126,7 +126,7 @@ body {
   background: linear-gradient(180deg, rgba(100, 100, 100, 0.7) 0%, rgba(142, 142, 255, 0.3) 100%);
 }
 .blue-green {
-  background: linear-gradient(180deg, rgba(142, 142, 255, 0.3) 0%, rgba(80, 145, 0, 0.3) 100%);
+  background: linear-gradient(180deg, rgba(142, 142, 255, 0.3) 0%, rgb(12, 48, 0) 100%);
 }
 
 .nav-seperator {

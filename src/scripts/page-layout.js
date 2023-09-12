@@ -21,8 +21,7 @@ let projectsLeft;
 let projectsRight;
 let projectsTopContainer;
 
-let timelineCardLeft;
-let timelineCardRight;
+let timelineContent;
 
 window.addEventListener('load', () => {
   let windowHeight = window.innerHeight;
@@ -54,14 +53,16 @@ window.addEventListener('load', () => {
   projectsRight = document.querySelector('.projects-right');
   projectsTopContainer = document.querySelector('.projects-item-container-top');
 
-  timelineCardLeft = document.querySelectorAll('.timeline-card-left');
-  timelineCardRight = document.querySelectorAll('.timeline-card-right');
+  timelineContent = document.getElementById('timeline-content');
 
   // initial check of window ratio
   if (windowWidth / windowHeight < 1.12) {
     // do the logic to create mobile layout
     toggleMobileClasses(true);
+    alignTimelineObjects(true);
     isMobile = true;
+  } else {
+    alignTimelineObjects(false);
   }
 
   window.addEventListener('resize', () => {
@@ -75,13 +76,14 @@ window.addEventListener('load', () => {
       if (!isMobile) {
         // do the logic to create mobile layout
         toggleMobileClasses(true);
-
+        alignTimelineObjects(true);
         isMobile = true;
       }
     } else {
       if (isMobile) {
         // revert the logic for mobile layout
         toggleMobileClasses(false);
+        alignTimelineObjects(false);
         isMobile = false;
       }
     }
@@ -145,13 +147,6 @@ function toggleMobileClasses(isMobile) {
   projectsTopContainer.classList.toggle('projects-item-container-top');
   projectsTopContainer.classList.toggle('projects-item-container-top-mobile');
 
-  // for the timeline page
-  timelineCardLeft.forEach((card) => card.classList.toggle('timeline-card-left'));
-  timelineCardRight.forEach((card) => card.classList.toggle('timeline-card-right'));
-  timelineCardLeft.forEach((card) => card.classList.toggle('timeline-card-mobile'));
-  timelineCardRight.forEach((card) => card.classList.toggle('timeline-card-mobile'));
-  setTimeout(() => lines.forEach((line) => line.position()), 100);
-
   // for the navbar
   if (isMobile) {
     navbarRight.style.display = 'none';
@@ -164,5 +159,48 @@ function toggleMobileClasses(isMobile) {
     }
     navbarCollapsed.style.display = 'none';
     navMenuMobile.style.display = 'none';
+  }
+}
+
+function alignTimelineObjects(isMobile) {
+  timelineContent.innerHTML = '';
+  if (!isMobile) {
+    timelineDivContent.forEach((timelineDiv) => {
+      const timelineDatesContainer = document.createElement('div');
+      timelineDatesContainer.classList.add('timeline-dates-container');
+
+      const timelineDatesContainerCenter = document.createElement('div');
+      timelineDatesContainerCenter.classList.add('timeline-dates-container-center');
+      timelineDatesContainerCenter.innerHTML = `<div class="timeline-date">${timelineDiv.displayDate}</div>`;
+
+      if (!timelineDiv.alignLeft) {
+        const timelineEmptyDiv = document.createElement('div');
+        timelineDatesContainer.appendChild(timelineEmptyDiv);
+        timelineDatesContainer.appendChild(timelineDatesContainerCenter);
+        timelineDatesContainer.appendChild(timelineDiv);
+      } else {
+        timelineDatesContainer.appendChild(timelineDiv);
+        timelineDatesContainer.appendChild(timelineDatesContainerCenter);
+      }
+      const timelineSpacer = document.createElement('div');
+      timelineSpacer.classList.add('timeline-spacer');
+      timelineContent.appendChild(timelineSpacer);
+      timelineContent.appendChild(timelineDatesContainer);
+
+      const connectorLine = document.createElement('div');
+      connectorLine.id = 'connector-line';
+      timelineContent.appendChild(connectorLine);
+    });
+  } else {
+    timelineDivContent.forEach((timelineDiv) => {
+      const timelineDatesContainer = document.createElement('div');
+      timelineDatesContainer.classList.add('timeline-dates-container-mobile');
+      timelineDatesContainer.appendChild(timelineDiv);
+
+      const timelineSpacer = document.createElement('div');
+      timelineSpacer.classList.add('timeline-spacer');
+      timelineContent.appendChild(timelineSpacer);
+      timelineContent.appendChild(timelineDatesContainer);
+    });
   }
 }

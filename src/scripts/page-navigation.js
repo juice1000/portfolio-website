@@ -21,4 +21,7 @@ window.addEventListener('load', () => {
     document.getElementById('timeline-container').scrollIntoView({ behavior: 'smooth' });
     changeNavigationIcon(document.getElementById('navbar-info-right-collapsed'));
   });
+
+  // temporarily enabeled for development
+  // document.getElementById('timeline-container').scrollIntoView();
 });
