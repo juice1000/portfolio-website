@@ -77,7 +77,7 @@
   border: 1px solid;
   cursor: pointer;
   overflow: hidden;
-  padding: 1.5;
+  padding: 1.5vh 1.5vw 1.5vh 1.5vw;
   font-size: large;
 }
 

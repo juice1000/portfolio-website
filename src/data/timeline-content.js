@@ -71,7 +71,7 @@ let timelineObjects = [
   },
   {
     alignLeft: false,
-    title: `AI Fashion Designer`,
+    title: `Listify`,
     monthStarts: ``,
     monthEnds: `January`,
     yearStarts: ``,
@@ -196,7 +196,7 @@ const timelineDivContent = timelineObjects.map((timelineObject) => {
   timelineCard.innerHTML = `<h2>${timelineObject.title}</h2><span>${timelineDurationString}</span`;
 
   const timelineCardList = document.createElement('ul');
-  timelineCardList.innerHTML = timelineObject.descriptionItems.map((item) => `<li>${item}</li>`);
+  timelineCardList.innerHTML = timelineObject.descriptionItems.map((item) => `<li>${item}</li>`).join('');
 
   timelineCard.appendChild(timelineCardList);
   timelineCard.alignLeft = timelineObject.alignLeft;
