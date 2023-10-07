@@ -2,6 +2,8 @@ let navContainer;
 let navbarRight;
 let navbarCollapsed;
 let navMenuMobile;
+let navInfoLeft;
+let clickSomewhere;
 
 let introContainer;
 let introLeft;
@@ -36,6 +38,7 @@ window.addEventListener('load', () => {
   navbarRight = document.getElementById('nav-info-right');
   navbarCollapsed = document.getElementById('navbar-info-right-collapsed');
   navMenuMobile = document.getElementById('navmenu-mobile');
+  clickSomewhere = document.getElementById('click-somewhere');
 
   introContainer = document.querySelector('.intro-container');
   introLeft = document.querySelector('.intro-container-left');
@@ -62,6 +65,11 @@ window.addEventListener('load', () => {
     alignTimelineObjects(true);
     isMobile = true;
   } else {
+    if (windowWidth < 850) {
+      navbarRight.style.display = 'none';
+      navbarCollapsed.style.display = 'inline-block';
+      clickSomewhere.style.fontSize = '0.8rem';
+    }
     alignTimelineObjects(false);
   }
 
@@ -72,7 +80,7 @@ window.addEventListener('load', () => {
     windowHeight = window.innerHeight;
     windowWidth = window.innerWidth;
 
-    if (windowWidth / windowHeight < 1.12) {
+    if (windowWidth / windowHeight < 1.2) {
       if (!isMobile) {
         // do the logic to create mobile layout
         toggleMobileClasses(true);
@@ -148,17 +156,22 @@ function toggleMobileClasses(isMobile) {
   projectsTopContainer.classList.toggle('projects-item-container-top-mobile');
 
   // for the navbar
+  let windowWidth = window.innerWidth;
   if (isMobile) {
     navbarRight.style.display = 'none';
     navbarCollapsed.style.display = 'inline-block';
+    clickSomewhere.style.fontSize = '0.8rem';
   } else {
-    navbarRight.style.display = 'block';
-    if (navbarCollapsed.classList.contains('change')) {
-      navbarCollapsed.classList.remove('change');
-      navContainer.classList.remove('opaque-color');
+    if (windowWidth > 850) {
+      navbarRight.style.display = 'block';
+      clickSomewhere.style.fontSize = 'large';
+      if (navbarCollapsed.classList.contains('change')) {
+        navbarCollapsed.classList.remove('change');
+        navContainer.classList.remove('opaque-color');
+      }
+      navbarCollapsed.style.display = 'none';
+      navMenuMobile.style.display = 'none';
     }
-    navbarCollapsed.style.display = 'none';
-    navMenuMobile.style.display = 'none';
   }
 }
 
