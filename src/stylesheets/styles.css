@@ -57,6 +57,7 @@ body {
   justify-content: flex-end;
   border-radius: 5px;
   width: 100%;
+  font-size: large;
 }
 .opaque-color {
   background-color: rgba(80, 80, 80, 0);
@@ -65,7 +66,6 @@ body {
 .navbar-container span {
   margin-right: 4vw;
   cursor: pointer;
-  font-size: large;
 }
 
 .navbar-container a {

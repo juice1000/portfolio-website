@@ -3,7 +3,6 @@ let navbarRight;
 let navbarCollapsed;
 let navMenuMobile;
 let navInfoLeft;
-let clickSomewhere;
 
 let introContainer;
 let introLeft;
@@ -38,7 +37,6 @@ window.addEventListener('load', () => {
   navbarRight = document.getElementById('nav-info-right');
   navbarCollapsed = document.getElementById('navbar-info-right-collapsed');
   navMenuMobile = document.getElementById('navmenu-mobile');
-  clickSomewhere = document.getElementById('click-somewhere');
 
   introContainer = document.querySelector('.intro-container');
   introLeft = document.querySelector('.intro-container-left');
@@ -57,18 +55,16 @@ window.addEventListener('load', () => {
   projectsTopContainer = document.querySelector('.projects-item-container-top');
 
   timelineContent = document.getElementById('timeline-content');
-
   // initial check of window ratio
-  if (windowWidth / windowHeight < 1.12) {
+  if (windowWidth / windowHeight < 1.15) {
+    console.log('here');
     // do the logic to create mobile layout
     toggleMobileClasses(true);
     alignTimelineObjects(true);
     isMobile = true;
   } else {
     if (windowWidth < 850) {
-      navbarRight.style.display = 'none';
-      navbarCollapsed.style.display = 'inline-block';
-      clickSomewhere.style.fontSize = '0.8rem';
+      navContainer.style.fontSize = '0.9rem';
     }
     alignTimelineObjects(false);
   }
@@ -160,18 +156,19 @@ function toggleMobileClasses(isMobile) {
   if (isMobile) {
     navbarRight.style.display = 'none';
     navbarCollapsed.style.display = 'inline-block';
-    clickSomewhere.style.fontSize = '0.8rem';
+    navContainer.style.fontSize = '0.9rem';
   } else {
     if (windowWidth > 850) {
-      navbarRight.style.display = 'block';
-      clickSomewhere.style.fontSize = 'large';
-      if (navbarCollapsed.classList.contains('change')) {
-        navbarCollapsed.classList.remove('change');
-        navContainer.classList.remove('opaque-color');
-      }
-      navbarCollapsed.style.display = 'none';
-      navMenuMobile.style.display = 'none';
+      navContainer.style.fontSize = 'large';
     }
+
+    navbarRight.style.display = 'block';
+    if (navbarCollapsed.classList.contains('change')) {
+      navbarCollapsed.classList.remove('change');
+      navContainer.classList.remove('opaque-color');
+    }
+    navbarCollapsed.style.display = 'none';
+    navMenuMobile.style.display = 'none';
   }
 }
 
