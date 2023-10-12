@@ -64,7 +64,7 @@ window.addEventListener('load', () => {
     isMobile = true;
   } else {
     if (windowWidth < 850) {
-      navContainer.style.fontSize = '0.9rem';
+      navContainer.style.fontSize = '0.8rem';
     }
     alignTimelineObjects(false);
   }
@@ -156,7 +156,7 @@ function toggleMobileClasses(isMobile) {
   if (isMobile) {
     navbarRight.style.display = 'none';
     navbarCollapsed.style.display = 'inline-block';
-    navContainer.style.fontSize = '0.9rem';
+    navContainer.style.fontSize = '0.8rem';
   } else {
     if (windowWidth > 850) {
       navContainer.style.fontSize = 'large';
