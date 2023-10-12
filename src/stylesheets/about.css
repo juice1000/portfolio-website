@@ -49,6 +49,7 @@
 }
 
 .about-mobile-content {
+  z-index: 10;
   display: flex;
   margin-top: 3%;
   width: 100%;
