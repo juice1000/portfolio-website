@@ -9,13 +9,19 @@ let projects;
 let projectsTop;
 let slideShowImages;
 
+let projectContents;
+
 window.addEventListener('load', () => {
   projects = document.querySelectorAll('.projects-item');
   projectsTop = document.querySelectorAll('.projects-item-top');
   slideShowImages = document.querySelectorAll('.slideShow');
   const preview = document.querySelector('#preview');
+  projectContents = document.querySelectorAll('.projects-item-content');
 
+  let count = 0;
   for (const image of slideShowImages) {
+    projectContents[count].innerHTML = projectsObjects[count].shortDescription;
+    count++;
     image.addEventListener('click', (e) => {
       e.preventDefault();
       currImage = e.target;
@@ -91,6 +97,9 @@ window.addEventListener('load', () => {
         setTimeout(() => projectsTop[i].classList.remove('projects-item-expanded'), 1000);
         setTimeout(() => projectsTop[i].classList.remove('projects-item-shrink'), 1000);
 
+        // expand project description of selected project
+        projectContents[i].innerHTML = projectsObjects[i].shortDescription;
+
         preview.src = '';
         preview.style.display = 'none';
       }
@@ -122,6 +131,8 @@ window.addEventListener('load', () => {
         projects[i].classList.add('projects-item-invisible');
         projectsTop[i].classList.add('projects-item-expanded');
 
+        // expand project description of selected project
+        projectContents[i].innerHTML = projectsObjects[i].longDescription;
         // show preview of selected project
         preview.src = 'assets/images/' + slideShowImages[i].id + '.gif';
         preview.style.display = 'block';
