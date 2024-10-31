@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tsparticles Setup</title>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- tsparticles CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <!-- Add some basic CSS for the particles container -->
+  <style>
+    #tsparticles {
+      width: 100%;
+      height: 100vh;
+      background-color: #000; /* Dark background to see particles better */
+    }
+  </style>
+</head>
+<body>
+  <!-- Container for tsparticles -->
+  <div id="tsparticles"></div>
+
+  <script>
+    $(document).ready(function() {
+      // Initialize tsparticles with custom configuration
+      tsParticles.load("tsparticles", {
+        fpsLimit: 60,
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              area: 800
+            }
+          },
+          color: {
+            value: "#ffffff"
+          },
+          shape: {
+            type: "circle"
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+            anim: {
+              enable: false
+            }
+          },
+          size: {
+            value: 5,
+            random: true,
+            anim: {
+              enable: false
+            }
+          },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            random: false,
+            straight: false,
+            outMode: "out",
+            bounce: false
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "repulse"
+            },
+            onclick: {
+              enable: true,
+              mode: "push"
+            },
+            resize: true
+          },
+          modes: {
+            repulse: {
+              distance: 100,
+              duration: 0.4
+            },
+            push: {
+              particles_nb: 4
+            }
+          }
+        },
+        detectRetina: true
+      });
+    });
+  </script>
+</body>
+</html>
