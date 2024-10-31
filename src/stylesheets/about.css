@@ -18,7 +18,7 @@
 
 .about-content {
   display: flex;
-  margin-top: 3%;
+  /* margin-top: 1%; */
   width: 100%;
   justify-content: space-between;
   line-height: 1.8vw;
@@ -30,7 +30,7 @@
 }
 .about-right {
   width: 50%;
-  margin-top: -10%;
+  margin-top: -7%;
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -68,6 +68,6 @@
 
 .subtitle {
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.6vw;
   line-height: 1.3;
 }
